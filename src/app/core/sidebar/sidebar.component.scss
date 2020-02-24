@@ -1,0 +1,44 @@
+@import "../../../assets/styles/variables";
+
+
+#sidebar{
+  padding-top: 10%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+}
+
+#main-logo{
+  max-width: 120px;
+}
+
+.list-group-item{
+  cursor: pointer;
+  color: $light;
+  &.active{
+    //cursor: default;
+  }
+}
+
+#sidebar-menu{
+  width: calc(100% + #{map-get($spacers, 4) * 2});
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+#add-button{
+  padding: 0 $btn-padding-x-lg;
+  width:auto;
+  height: 50px;
+  text-align: center;
+  line-height: 48px;
+}
+
+fa-icon{
+  display: inline-block;
+  font-size: $lead-font-size;
+  vertical-align: bottom;
+  margin-right: 8px;
+}

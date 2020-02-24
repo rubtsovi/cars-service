@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+// Bootstrap
+@import "~angular-bootstrap-md/scss/core/bootstrap/functions";
+@import "~angular-bootstrap-md/scss/core/bootstrap/variables";
+
+// CORE
+@import "~angular-bootstrap-md/scss/core/mixins";
+// Your custom variables
+@import "~angular-bootstrap-md/scss/custom-variables";
+@import "~angular-bootstrap-md/scss/core/colors";
+@import "~angular-bootstrap-md/scss/core/variables";
+@import "~angular-bootstrap-md/scss/core/global";
+@import "~angular-bootstrap-md/scss/core/helpers";
+//@import "~angular-bootstrap-md/scss/core/typography";
+//@import "~angular-bootstrap-md/scss/core/masks";
+@import "~angular-bootstrap-md/scss/core/waves";
+
+// FREE
+@import "~angular-bootstrap-md/scss/free/animations-basic";
+@import "~angular-bootstrap-md/scss/free/animations-extended";
+@import "~angular-bootstrap-md/scss/free/buttons";
+@import "~angular-bootstrap-md/scss/free/cards";
+@import "~angular-bootstrap-md/scss/free/dropdowns";
+@import "~angular-bootstrap-md/scss/free/navbars";
+@import "~angular-bootstrap-md/scss/free/pagination";
+@import "~angular-bootstrap-md/scss/free/badges";
+@import "~angular-bootstrap-md/scss/free/modals";
+//@import "~angular-bootstrap-md/scss/free/carousels";
+@import "~angular-bootstrap-md/scss/free/forms";
+@import "~angular-bootstrap-md/scss/free/input-group";
+@import "~angular-bootstrap-md/scss/free/msc";
+@import "~angular-bootstrap-md/scss/free/footers";
+@import "~angular-bootstrap-md/scss/free/list-group";
+@import "~angular-bootstrap-md/scss/free/tables";
+@import "~angular-bootstrap-md/scss/free/depreciated";
+@import "~angular-bootstrap-md/scss/free/steppers";
+// Angular
+
+@import "~angular-bootstrap-md/scss/angular/mdb-angular-free";
+// Your custom styles
+@import "~angular-bootstrap-md/scss/custom-styles";

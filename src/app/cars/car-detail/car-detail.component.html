@@ -1,0 +1,101 @@
+<cs-header>
+  <h3 title-row>{{ car.model }} <mdb-badge danger="true" *ngIf="car.isFullyDamaged" style="margin-left: 10px;">całkowicie uszkodzony</mdb-badge></h3>
+  <div description-row>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, unde.</div>
+  <button back-button mdbBtn color="info" type="button" class="rounded-pill" mdbWavesEffect size="sm" [routerLink]="'/cars'"> <fa-icon [icon]="backIcon"></fa-icon> Cofnij</button>
+</cs-header>
+<div>
+  <form [formGroup]="editForm" class="container-fluid py-5 h-100">
+    <div class="row">
+      <div class="col pl-xl-5">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <mat-card>
+              <mat-card-title>
+                Podstawowe dane
+              </mat-card-title>
+              <mat-card-content>
+                <mat-list>
+                  <mat-list-item>
+                    <strong>Model:</strong>&nbsp;{{ car.model }}
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Numer rejestracyjny:</strong>&nbsp; {{ car.plate }}
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Właściciel:</strong>&nbsp;{{ car.clientFirstName }} {{ car.clientSurname }}
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Data zgłoszenia:</strong>&nbsp;{{ car.deliveryDate | date : 'fullDate' : 'GMT+01:00' : 'pl' }}
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+            <mat-card style="margin-top: 30px;">
+              <mat-card-title>
+                Parametry samochodu
+              </mat-card-title>
+              <mat-card-content>
+                <mat-list>
+                  <mat-list-item>
+                    <strong>Rok produkcji:</strong>&nbsp;{{ car.year }}
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Typ nadwozia:</strong>&nbsp; {{ car.type }}
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Kolor:</strong>&nbsp; {{ car.color }}
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Moc silnika:</strong>&nbsp;{{ car.power }}
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+            </mat-card>
+          </div>
+          <div class="col-12 col-md-6">
+            <mat-card>
+              <mat-card-title>Dane edytowalne</mat-card-title>
+              <mat-card-content>
+                <mat-list>
+                  <mat-list-item>
+                    <strong>Deadline:</strong>&nbsp;
+                    <span *ngIf="!showInputs">
+                      {{ car.deadline | date : 'fullDate' }}
+                    </span>
+                    <mat-form-field [floatLabel]="'never'" *ngIf="showInputs" class="col pr-0">
+                      <input formControlName="deadline" matInput [matDatepicker]="deadlineDate"
+                             placeholder="Deadline" (focus)="deadlineDate.open()">
+                      <mat-datepicker-toggle matSuffix [for]="deadlineDate"></mat-datepicker-toggle>
+                      <mat-datepicker #deadlineDate></mat-datepicker>
+                      <mat-error *ngIf="editForm.get('deadline').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                  </mat-list-item>
+                  <mat-divider [inset]="true"></mat-divider>
+                  <mat-list-item>
+                    <strong>Koszt naprawy:</strong> &nbsp;
+                    <span *ngIf="!showInputs">{{ car.cost | currency : 'PLN' : undefined : '1.0-2' }}</span>
+                    <mat-form-field class="col pr-0" [floatLabel]="'never'" *ngIf="showInputs">
+                      <input formControlName="cost" matInput placeholder="Koszt naprawy" type="text">
+                      <mat-error *ngIf="editForm.get('cost').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                  </mat-list-item>
+                </mat-list>
+              </mat-card-content>
+              <mat-divider></mat-divider>
+              <mat-card-actions align="end">
+                <button *ngIf="showInputs" mdbBtn color="success" id="submit-edit-form" class="rounded-pill btn-sm" mdbWavesEffect (click)="confirmCarEdition()">Zapisz</button>
+                <button #activateEditionBtn (click)="activateEdition($event)" mdbBtn color="success" id="edit-car" class="rounded-pill btn-sm" mdbWavesEffect>{{ showInputs | toggleBtnName : 'Anuluj' : 'Edytuj' }}</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

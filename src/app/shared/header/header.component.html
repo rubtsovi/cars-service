@@ -1,0 +1,10 @@
+<mat-toolbar class="pl-xl-5">
+    <mat-toolbar-row class="toolbar-title pl-xl-0">
+        <ng-content select="[title-row]"></ng-content>
+        <span class="col"></span>
+        <ng-content select="[back-button]"></ng-content>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="toolbar-description pl-xl-0">
+        <ng-content select="[description-row]"></ng-content>
+    </mat-toolbar-row>
+</mat-toolbar>

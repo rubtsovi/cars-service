@@ -1,0 +1,111 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Dodawanie nowego samochodu</h4>
+    </div>
+    <div class="modal-body">
+        <form class="container-fluid" [formGroup]="addCarForm">
+            <div class="row">
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="model" matInput placeholder="Model" type="text">
+                        <mat-error *ngIf="addCarForm.get('model').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100 position-relative">
+                        <mat-select placeholder="Wybierz typ samochodu" formControlName="type">
+                            <mat-option disabled>-- Wybierz typ samochodu --</mat-option>
+                            <mat-option [value]="'coupe'">Coupe</mat-option>
+                            <mat-option [value]="'kombi'">Kombi</mat-option>
+                            <mat-option [value]="'sedan'">Sedan</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="addCarForm.get('type').invalid">Musisz wybrać jedną z opcji</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="year" matInput placeholder="Rok produkcji" type="number" min="1980"
+                               max="2018">
+                        <mat-error *ngIf="addCarForm.get('year').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="color" matInput placeholder="Kolor" type="text">
+                        <mat-error *ngIf="addCarForm.get('color').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="plate" matInput placeholder="Nr rejestracyjny" type="text">
+                        <mat-error *ngIf="addCarForm.get('plate').hasError('required')">Pole nie może być puste
+                        </mat-error>
+                        <mat-error *ngIf="addCarForm.get('plate').hasError('minlength')">Minimalna ilość znaków {{
+                            addCarForm.get('plate').errors?.minlength.requiredLength }}
+                        </mat-error>
+                        <mat-error *ngIf="addCarForm.get('plate').hasError('maxlength')">Maksymalna ilość znaków {{
+                            addCarForm.get('plate').errors?.maxlength.requiredLength }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="power" matInput placeholder="Moc [kM]" type="number">
+                        <mat-error *ngIf="addCarForm.get('power').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="deliveryDate" matInput [matDatepicker]="deliveryDate"
+                               placeholder="Data dostarczenia" (focus)="deliveryDate.open()">
+                        <mat-datepicker-toggle matSuffix [for]="deliveryDate"></mat-datepicker-toggle>
+                        <mat-datepicker #deliveryDate></mat-datepicker>
+                        <mat-error *ngIf="addCarForm.get('deliveryDate').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="deadline" matInput [matDatepicker]="deadlineDate"
+                               placeholder="Deadline" (focus)="deadlineDate.open()">
+                        <mat-datepicker-toggle matSuffix [for]="deadlineDate"></mat-datepicker-toggle>
+                        <mat-datepicker #deadlineDate></mat-datepicker>
+                        <mat-error *ngIf="addCarForm.get('deadline').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="cost" matInput placeholder="Koszt naprawy" type="text">
+                        <mat-error *ngIf="addCarForm.get('cost').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="clientFirstName" matInput placeholder="Imię właściciela" type="text">
+                        <mat-error *ngIf="addCarForm.get('clientFirstName').invalid">Pole nie może być puste
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4">
+                    <mat-form-field class="w-100">
+                        <input formControlName="clientSurname" matInput placeholder="Nazwisko właściciela" type="text">
+                        <mat-error *ngIf="addCarForm.get('clientSurname').invalid">Pole nie może być puste</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 col-xl-4 d-flex flex-column justify-content-center">
+                    <mat-checkbox formControlName="isFullyDamaged">Samochód w całości uszkodzony</mat-checkbox>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" outline="true" class="" aria-label="Close" (click)="modalRef.hide()"
+                mdbWavesEffect>Anuluj
+        </button>
+        <button type="button" mdbBtn color="primary" (click)="addCar()" class="relative" mdbWavesEffect>
+            Zapisz
+        </button>
+    </div>
+</div>

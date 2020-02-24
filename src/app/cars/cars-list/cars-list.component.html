@@ -1,0 +1,39 @@
+<cs-header>
+    <h3 title-row>Lista samochodów</h3>
+    <div description-row>Podgląd listy wsystkich zarejestrowanych w systemie samochodów, ich właścicieli oraz kosztów naprawy</div>
+</cs-header>
+<div>
+    <div class="container-fluid py-5 h-100">
+        <div class="row flex-column h-100">
+            <div class="col pl-xl-5 position-relative">
+                <div id="cars-list" *ngIf="cars?.length; else noCars" class="h-100">
+                    <cs-list-header-row></cs-list-header-row>
+                    <div id="cars-list-body" class="ps position-relative mx-n3 px-3" [perfectScrollbar]>
+                        <cs-list-row *ngFor="let car of cars; last as isLast; first as isFirst" [_car]="car" [_isLast]="isLast" [_isFirst]="isFirst" (removeBtnClicked)="removeCar($event)"></cs-list-row>
+                    </div>
+                </div>
+            </div>
+            <div id="sum-section" class="col-auto pl-xl-5 ">
+                <div>
+                    <cs-total-cost #totalCostRef [totalCost]="totalCost" [isGrossCostShown]="isGrossCostShown" (shownGross)="grossCost = $event"></cs-total-cost>
+                    <div class="row" *ngIf="grossCost">
+                        <div class="col-12">
+                            <div class="bg-white px-3 pb-3 text-uppercase text-right font-weight-bold text-info">
+                                Total gross cost: {{ grossCost | currency : 'PLN' }}
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!grossCost" class="px-3 pt-3 text-right">
+                        <button (click)="showGross()" class="btn btn-sm btn-info text-uppercase rounded-pill">Show gross
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <ng-template #noCars>
+                <div class="col">
+                    <div class="alert alert-info">Brak wpisanych samochodów</div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

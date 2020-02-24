@@ -1,0 +1,28 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+:host{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  overflow: hidden;
+  >div{
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+}
+
+.car-damaged{
+  border-left: 2px solid $danger;
+}
+
+#sum-section{
+  //height: 111px;
+  //flex-basis: 111px;
+}
+
+#cars-list-body{
+  height: 570px;
+  overflow: hidden;
+}

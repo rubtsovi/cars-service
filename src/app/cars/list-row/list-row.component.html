@@ -1,0 +1,28 @@
+<div class="row single-car-in-list mx-0 py-1" [ngClass]="{ 'border-bottom' : !isLast, 'mt-0' : isFirst }" [routerLink]="['/cars', car.id]">
+    <div class="col-xl-2 pl-xl-3" csImportant>
+        <span class="col-title d-xl-none font-weight-bold">Model</span>
+        {{ car.model }}
+        <fa-icon *ngIf="car.isFullyDamaged" class="text-danger" [icon]="crushedCar"></fa-icon>
+    </div>
+    <div class="col-xl-1" csImportant>
+        <span class="col-title d-xl-none font-weight-bold">Nr rej.</span>
+        {{ car.plate }}
+    </div>
+    <div class="col-xl-2">
+        <span class="col-title d-xl-none font-weight-bold">Data dostarczenia</span>
+        {{ car.deliveryDate | date: 'mediumDate' }}
+    </div>
+    <div class="col-xl-2">
+        <span class="col-title d-xl-none font-weight-bold">Deadline</span>
+        {{ car.deadline | date: 'mediumDate' }}
+    </div>
+    <div class="col-xl-2">
+        <span class="col-title d-xl-none font-weight-bold">Właściciel</span>
+        {{ car.clientFirstName }} {{ car.clientSurname | shortName }}
+    </div>
+    <div class="col-xl-2">
+        <span class="col-title d-xl-none font-weight-bold">Koszt naprawy</span>
+        {{ car.cost | currency : 'PLN' : 'symbol' : '1.0-2' : 'pl'  }}
+    </div>
+    <div class="col-xl-1"><button mdbBtn color="danger" class="btn-sm rounded-pill" title="Skasuj samochód" (click)="removeCar(car, $event)"><fa-icon [icon]="deleteIcon"></fa-icon></button></div>
+</div>

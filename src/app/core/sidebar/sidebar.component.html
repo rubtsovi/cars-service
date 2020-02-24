@@ -1,0 +1,14 @@
+<div id="sidebar" class="d-flex flex-column justify-content-start px-4 border-right bg-dark pb-5">
+  <img src="../../../assets/images/5_5_LOGO.png" alt="logo" class="img-fluid mx-auto" id="main-logo">
+  <div id="sidebar-menu" class="overflow-hidden position-relative mx-n4 mt-5">
+    <div class="ps position-relative w-100 h-100" [perfectScrollbar]>
+      <ul class="list-group list-group-flush">
+        <li [routerLink]="'cars'" [routerLinkActive]="'active'" class="list-group-item list-group-item-action px-4">cars</li>
+        <li class="list-group-item list-group-item-action px-4">Lorem ipsum.</li>
+        <li class="list-group-item list-group-item-action px-4">Lorem ipsum.</li>
+        <li class="list-group-item list-group-item-action px-4">Lorem ipsum.</li>
+      </ul>
+    </div>
+  </div>
+  <button mdbBtn color="success" type="button" id="add-button" class="align-self-start rounded-pill" (click)="addButtonClicked()" mdbWavesEffect><fa-icon [icon]="carIcon"></fa-icon> Dodaj samochód</button>
+</div>

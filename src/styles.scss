@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "assets/styles/styles";
+@import "~perfect-scrollbar/css/perfect-scrollbar.css";
+.ps.ps--active-y {
+  > .ps__rail-y {
+    z-index: 3;
+    background-color: transparent !important;
+  }
+}

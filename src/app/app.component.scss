@@ -1,0 +1,21 @@
+:root{
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+#router-outlet{
+  width: calc(100vw - 321px);
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#loading{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(#fff, .8);
+  z-index: 9;
+  height: 100vh;
+}
